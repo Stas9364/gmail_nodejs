@@ -14,8 +14,8 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 
-// const LOGIN = process.env.SMTP_LOGN || '---';
-// const PASSWORD = process.env.SMTP_PASSWORD || '---';
+const LOGIN = process.env.SMTP_LOGN || '---';
+const PASSWORD = process.env.SMTP_PASSWORD || '---';
 
 
 // create reusable transporter object using the default SMTP transport
@@ -24,8 +24,8 @@ let transporter = nodemailer.createTransport({
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-        user: 'lisovskiy.nodejs@gmail.com', // generated ethereal user
-        pass: 'rwxmsptsaurvhxwn', // generated ethereal password
+        user: LOGIN, // generated ethereal user
+        pass: PASSWORD, // generated ethereal password
     },
 });
 
