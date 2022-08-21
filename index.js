@@ -14,8 +14,8 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
 
-const LOGIN = process.env.SMTP_LOGN || '---';
-const PASSWORD = process.env.SMTP_PASSWORD || '---';
+// const LOGIN = process.env.SMTP_LOGN || '---';
+// const PASSWORD = process.env.SMTP_PASSWORD || '---';
 
 
 // create reusable transporter object using the default SMTP transport
@@ -24,8 +24,8 @@ let transporter = nodemailer.createTransport({
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-        user: LOGIN, // generated ethereal user
-        pass: PASSWORD, // generated ethereal password
+        user: 'lisovskiy.nodejs@gmail.com', // generated ethereal user
+        pass: 'rwxmsptsaurvhxwn', // generated ethereal password
     },
 });
 
@@ -52,11 +52,11 @@ app.post('/send-message', async (request, response) => {
     response.send('Success');
 });
 
-const PORT = process.env.PORT || 3010;
+// const PORT = process.env.PORT || 3010;
 
-app.listen(PORT, (err) => {
+app.listen(3010, (err) => {
     if (err) {
         return console.log('something bad happened', err);
     }
-    console.log(`server is listening on ${port}`);
+    console.log(`server is listening on ${PORT}`);
 });
