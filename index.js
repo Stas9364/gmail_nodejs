@@ -58,5 +58,5 @@ app.listen(3010, (err) => {
     if (err) {
         return console.log('something bad happened', err);
     }
-    console.log(`server is listening on ${PORT}`);
+    console.log(`server is listening on 3010`);
 });
