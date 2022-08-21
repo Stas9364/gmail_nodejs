@@ -4,7 +4,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser')
 
 const app = express();
-const port = 3000;
 
 app.use(cors());
 
@@ -14,8 +13,10 @@ app.use(bodyParser.urlencoded({extended: false}))
 // parse application/json
 app.use(bodyParser.json())
 
-const email = 'lisovskiy.nodejs@gmail.com'
-const password = 'rwxmsptsaurvhxwn';
+
+const LOGIN = process.env.SMTP_LOGN || '---';
+const PASSWORD = process.env.SMTP_PASSWORD || '---';
+
 
 // create reusable transporter object using the default SMTP transport
 let transporter = nodemailer.createTransport({
@@ -23,8 +24,8 @@ let transporter = nodemailer.createTransport({
     port: 587,
     secure: false, // true for 465, false for other ports
     auth: {
-        user: email, // generated ethereal user
-        pass: password, // generated ethereal password
+        user: LOGIN, // generated ethereal user
+        pass: PASSWORD, // generated ethereal password
     },
 });
 
@@ -51,8 +52,9 @@ app.post('/send-message', async (request, response) => {
     response.send('Success');
 });
 
+const PORT = process.env.PORT || 3010;
 
-app.listen(port, (err) => {
+app.listen(PORT, (err) => {
     if (err) {
         return console.log('something bad happened', err);
     }
