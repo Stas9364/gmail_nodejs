@@ -52,9 +52,9 @@ app.post('/send-message', async (request, response) => {
     response.send('Success');
 });
 
-// const PORT = process.env.PORT || 3010;
+const PORT = process.env.PORT || 3010;
 
-app.listen(3010, (err) => {
+app.listen(PORT, (err) => {
     if (err) {
         return console.log('something bad happened', err);
     }
